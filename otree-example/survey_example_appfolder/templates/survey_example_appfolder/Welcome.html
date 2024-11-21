@@ -3,19 +3,26 @@
 
 
 {% block title %}
+Survey - Assignment 2
 {% endblock %}
 
 {% block content %}
 <br>
-<h2> Survey Example </h2>
-    <hr>
-    Welcome to the first session of the tutorial. Here we are just going to have  a look at the very basic structure of otre.
+<h3> Welcome </h3>
+<hr>
+    
+<p>Welcome to this short survey. In the following we will ask you some questions about you and music.</p>
+<p>Filling out the survey takes about 2 minutes and is completely voluntary. The answers are treated anonymously and the survey can be interrupted at any time.</p>
 
-    <!-- This is the most basic way of implementing an input field -->
-    {{ formfield "entry_question"}}
+<div style="margin-bottom: 16px;"></div>
 
-   <button class="otree-btn-next btn btn-primary next-button otree-next-button">
-    Next
+<!-- This is the most basic way of implementing an input field -->
+{{ formfield "entry_question"}}
+
+<div style="margin-bottom: 24px;"></div>
+
+<button class="otree-btn-next btn btn-primary next-button otree-next-button"> 
+    Next 
 </button>
 
 {% endblock %}

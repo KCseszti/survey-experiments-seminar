@@ -1,0 +1,35 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block title %}
+Survey - Assignment 2
+{% endblock %}
+
+{% block content %}
+<br>
+<h3> Questions </h3>
+<hr>
+
+<p> Please answer the questions below: </p>
+
+<form method="post">    
+    {{ formfield "age_question"}}
+
+    {{ formfield "gender_question"}}
+
+    {{ formfield "work_question"}}
+
+    {{ formfield "music_question"}}
+
+    {{ formfield "song_question"}}
+
+    <div style="margin-bottom: 24px;"></div>
+
+   <button class="otree-btn-next btn btn-primary next-button otree-next-button">
+        Next
+    </button>
+
+</form>
+
+{% endblock %}
