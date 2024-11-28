@@ -9,11 +9,20 @@ from .models import Constants, Player
 
 class Welcome(Page):
     form_model = Player
-    form_fields = ['entry_question']
+    form_fields = ['screen_height', 'screen_width', 'entry_question']
+    #form_fields = ['entry_question']
 
 class SurveyPage(Page):
     form_model = Player
-    form_fields = ['age_question', 'gender_question', 'work_question', 'music_question', 'song_question']
+    form_fields = ['age_question', 'gender_question', 'work_question', 'music_question', 'song_question', 'vision_question', 'rorschach_question']
+    
+    def vars_for_template(self):
+        return {"group_assignment": safe_json(self.player.group_assignment)}
+
+class PopoutPage(Page):
+    form_model = Player
+    form_fields = ['popout_question', 'popout_yes', 'popout_no', 'time_popout']
+    
 
 class EndPage(Page):
     #style: this is a good example of the style 'CamelCase' that one normally uses for classes
@@ -21,5 +30,6 @@ class EndPage(Page):
 
 #Here we define in which ordering we want the pages to be shown. We always start with a Welcome page and end with an End page.
 page_sequence = [Welcome,
-                SurveyPage,           
+                SurveyPage,
+                PopoutPage,           
                 EndPage]

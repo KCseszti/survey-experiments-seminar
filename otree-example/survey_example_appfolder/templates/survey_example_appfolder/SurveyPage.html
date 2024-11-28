@@ -1,9 +1,24 @@
 {% extends "global/Page.html" %}
 {% load otree static %}
 
+{% block scripts %}
+<script>
+    var group_assignment = {{ group_assignment }};
+
+    var div_group0 = document.getElementById('group0');
+    var div_group1 = document.getElementById('group1');
+
+    if (group_assignment == 0) {
+        div_group0.style.display = "block";
+    }
+    if (group_assignment == 1) {
+        div_group1.style.display = "block";
+    }
+</script>
+{% endblock %}
 
 {% block title %}
-Survey - Assignment 2
+Survey - Assignment 3
 {% endblock %}
 
 {% block content %}
@@ -13,23 +28,30 @@ Survey - Assignment 2
 
 <p> Please answer the questions below: </p>
 
-<form method="post">    
-    {{ formfield "age_question"}}
+<div id="group0" style="display: none">
+    <img src="{{ static 'vision74.png' }}" style="max-width: 200px; max-height: 200px;"/>
+    {{ formfield "vision_question"}}
+</div>
 
-    {{ formfield "gender_question"}}
+<div id="group1" style="display: none">
+    <img src="{{ static 'rorschach.png' }}" style="max-width: 200px; max-height: 200px;"/>
+    {{ formfield "rorschach_question"}}
+</div>
 
-    {{ formfield "work_question"}}
+{{ formfield "age_question"}}
 
-    {{ formfield "music_question"}}
+{{ formfield "gender_question"}}
 
-    {{ formfield "song_question"}}
+{{ formfield "work_question"}}
 
-    <div style="margin-bottom: 24px;"></div>
+{{ formfield "music_question"}}
 
-   <button class="otree-btn-next btn btn-primary next-button otree-next-button">
-        Next
-    </button>
+{{ formfield "song_question"}}
 
-</form>
+<div style="margin-bottom: 24px;"></div>
+
+<button class="otree-btn-next btn btn-primary next-button otree-next-button">
+    Next
+</button>
 
 {% endblock %}
