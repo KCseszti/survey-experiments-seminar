@@ -10,7 +10,7 @@ from otree.api import (
 )
 
 import random
-#from survey_example_appfolder.HelperFunctions import random_number
+from survey_example_appfolder.HelperFunctions import random_number
 
 author = 'Eszter Diána Kocsis'
 #'your names and team objective go here'
@@ -22,22 +22,17 @@ class Constants(BaseConstants):
     num_rounds = 1
 
 class Subsession(BaseSubsession):
-    #pass
     def creating_session(self):
         for p in self.get_players():
             p.group_assignment = random.Random().randint(0, 1)
             #p.group_assignment = random_number(0,2)
 
+
 class Group(BaseGroup):
-    #we will only come to the group class when we look at advanced methods
-    #pass
     counter = models.IntegerField(initial = 0)
 
 
 class Player(BasePlayer):
-    #this is the most important feature of this file. We can collect all the variables used on the html pages here
-    
-    #The Variables are structured on the base of pages
     entry_question = models.StringField(
         label="Please enter your name"
     )
@@ -48,10 +43,11 @@ class Player(BasePlayer):
         max=99
     )
     
-    gender_question = models.BooleanField(
-        label="What is your gender?",
-        choices=['male', 'female', 'other']
-    )
+    #gender_question = models.BooleanField(
+    #    label="What is your gender?",
+    #    choices=['male', 'female', 'other']
+    #)
+    
     
     work_question = models.BooleanField(
         label="What is your occupation?",
@@ -68,7 +64,7 @@ class Player(BasePlayer):
         label="What is the title of your favourite song?"
     )           
     
-    # Task1 -image questions
+    #Assignment 3 - Task1 -image questions
     vision_question = models.BooleanField(
         blank=True,
         label="What number do you see on the picture?",
@@ -80,17 +76,30 @@ class Player(BasePlayer):
         label="What do you see on the picture?"
     )
     
+    # Assigment 3: Task 1
     group_assignment = models.IntegerField()
     
-    # Task2 - popout question
+    # Assignment 3: Task2 - popout question
     popout_question = models.IntegerField(blank=True)
     popout_yes = models.StringField(blank=True)
     popout_no = models.StringField(blank=True)
     
-    # Task3 - capturing time & screen size
+    # Assignment 3: Task3 - capturing time & screen size
+    device_type = models.IntegerField()
+    operating_system = models.IntegerField()
     time_popout = models.StringField(initial='-999')
     screen_height = models.IntegerField(blank=True, 
                                         initial=-999)
     screen_width = models.IntegerField(blank=True, 
                                        initial=-999)
     
+    
+    # Assignment 4: 
+    screenout = models.BooleanField(initial=0)
+    quota = models.BooleanField(initial=0)
+    eligible_question = models.IntegerField()
+    
+    #age = models.IntegerField(max=110, min=1)  #we can also have max and min guidelines
+    gender = models.IntegerField(initial=-999, label='Gender Question')  #we can add an initial value or a different label
+    hidden_input = models.IntegerField(initial=50, blank=True)
+    gender_counter = models.IntegerField(initial = 0)

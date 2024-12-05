@@ -1,13 +1,18 @@
 {% extends "global/Page.html" %}
+{% extends "global/GlobalWelcome.html" %}
 {% load otree static %}
 
 {% block title %}
-Survey - Assignment 3
+Survey - Assignment 4
 {% endblock %}
 
 {% block content %}
+<input id="device_type" type="hidden" name="device_type" />
+<input id="operating_system" type="hidden" name="operating_system" />
 <input id="screen_height" type="hidden" name="screen_height" />
 <input id="screen_width" type="hidden" name="screen_width" />
+
+<script src="{% static 'persist-raw.js' %}"></script>
 
 <br>
 <h3> Welcome </h3>
@@ -18,8 +23,15 @@ Survey - Assignment 3
 
 <div style="margin-bottom: 16px;"></div>
 
-<!-- This is the most basic way of implementing an input field -->
 {{ formfield "entry_question"}}
+
+<div style="margin-bottom: 24px;"></div>
+
+<p>Are you eligible to take part in this survey??</p>
+<input type="radio" name="eligible_question" value="1" class="persist"/> Yes
+<br>
+<input type="radio" name="eligible_question" value="2" class="persist"/> No
+<br>
 
 <div style="margin-bottom: 24px;"></div>
 
