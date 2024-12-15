@@ -23,7 +23,7 @@ class QuotaPage(Page):
 
 class SurveyPage(Page):
     form_model = Player
-    form_fields = ['work_question', 'music_question', 'song_question', 'vision_question', 'rorschach_question']
+    form_fields = ['work', 'music_question', 'song_question'] #, 'vision_question', 'rorschach_question'
     
     def vars_for_template(self):
         return {"group_assignment": safe_json(self.player.group_assignment),

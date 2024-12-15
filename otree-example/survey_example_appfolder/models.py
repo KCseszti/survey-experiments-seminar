@@ -33,26 +33,41 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    # Welcome page
+    device_type = models.IntegerField()
+    operating_system = models.IntegerField()
+    time_popout = models.StringField(initial='-999')
+    screen_height = models.IntegerField(blank=True, 
+                                        initial=-999)
+    screen_width = models.IntegerField(blank=True, 
+                                       initial=-999)
+    
     entry_question = models.StringField(
         label="Please enter your name"
     )
     
+    eligible_question = models.IntegerField()
+    
+    # Quota page
     age_question = models.IntegerField(
         label="How old are you?",
         min=16,
         max=99
     )
     
-    #gender_question = models.BooleanField(
-    #    label="What is your gender?",
-    #    choices=['male', 'female', 'other']
-    #)
+    gender = models.IntegerField(initial=-999, label='Gender Question')
     
+    gender_counter = models.IntegerField(initial = 0)
     
-    work_question = models.BooleanField(
-        label="What is your occupation?",
-        choices=['student', 'part-time worker', 'full-time worker', 'pensioner', 'jobless', 'other']
+    # Survey page
+    vision_question = models.IntegerField(blank=True, label='Vision Question')
+    
+    rorschach_question = models.StringField(
+        blank=True,
+        label="What do you see on the picture?"
     )
+    
+    work = models.IntegerField(label='Work Question')
     
     music_question = models.FloatField(
         label="How many hours a day do you listen to music on average?",
@@ -62,44 +77,21 @@ class Player(BasePlayer):
     
     song_question = models.StringField(
         label="What is the title of your favourite song?"
-    )           
-    
-    #Assignment 3 - Task1 -image questions
-    vision_question = models.BooleanField(
-        blank=True,
-        label="What number do you see on the picture?",
-        choices=['14', '24', '94', '74', 'What number?']
     )
     
-    rorschach_question = models.StringField(
-        blank=True,
-        label="What do you see on the picture?"
-    )
-    
-    # Assigment 3: Task 1
-    group_assignment = models.IntegerField()
-    
-    # Assignment 3: Task2 - popout question
+    # Popout page
     popout_question = models.IntegerField(blank=True)
     popout_yes = models.StringField(blank=True)
     popout_no = models.StringField(blank=True)
     
-    # Assignment 3: Task3 - capturing time & screen size
-    device_type = models.IntegerField()
-    operating_system = models.IntegerField()
-    time_popout = models.StringField(initial='-999')
-    screen_height = models.IntegerField(blank=True, 
-                                        initial=-999)
-    screen_width = models.IntegerField(blank=True, 
-                                       initial=-999)
     
+    # Assigment 3: Task 1
+    group_assignment = models.IntegerField()
     
     # Assignment 4: 
     screenout = models.BooleanField(initial=0)
     quota = models.BooleanField(initial=0)
-    eligible_question = models.IntegerField()
     
     #age = models.IntegerField(max=110, min=1)  #we can also have max and min guidelines
-    gender = models.IntegerField(initial=-999, label='Gender Question')  #we can add an initial value or a different label
     hidden_input = models.IntegerField(initial=50, blank=True)
     gender_counter = models.IntegerField(initial = 0)

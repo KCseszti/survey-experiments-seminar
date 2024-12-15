@@ -52,17 +52,23 @@ Survey - Assignment 4
 
 <p> Please answer the questions below: </p>
 
-<div id="group0" style="display: none">
-    <img src="{{ static 'vision74.png' }}" style="max-width: 200px; max-height: 200px;"/>
-    {{ formfield "vision_question"}}
-</div>
 
-<div id="group1" style="display: none">
-    <img src="{{ static 'rorschach.png' }}" style="max-width: 200px; max-height: 200px;"/>
-    {{ formfield "rorschach_question"}}
-</div>
 
-{{ formfield "work_question"}}
+<div style="margin-bottom: 24px;"></div>
+
+<p>What is your occupation?</p>
+<input type="radio" name="work" value="1" /> student
+<br>
+<input type="radio" name="work" value="2" /> part-time worker
+<br>
+<input type="radio" name="work" value="3" /> full-time worker
+<br>
+<input type="radio" name="work" value="4" /> pensioner
+<br>
+<input type="radio" name="work" value="5" /> jobless
+<br>
+<input type="radio" name="work" value="6" /> other
+<br>
 
 {{ formfield "music_question"}}
 
